@@ -1,4 +1,5 @@
-# Nervousnet Social Sensing Hackathon - Privacy vs. Accuracy Challenge
+# Nervousnet Social Sensing Hackathon 
+#Privacy vs. Accuracy Challenge
 
 Purpose
 ---
