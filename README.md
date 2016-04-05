@@ -7,10 +7,9 @@ A summarizaiton function receives as input a vector with the raw sensitive data 
 * __Privacy-preservation__ is measured with _relative error of raw-sumamrized data_. For several users, the average of these errors measures the collective privacy-preservation. 
 * __Accuracy__ in analytics is measured with the _relative error of raw-summarized aggregated data_. 
 
-More information about the performance metrics can be found [here[](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/papers/Self-regulatory-information-sharing-in-participatory-social-sensing.pdf) and [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/presentations/information-sharing.pdf). 
+More information about the performance metrics can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/papers/Self-regulatory-information-sharing-in-participatory-social-sensing.pdf) and [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/presentations/information-sharing.pdf). 
 
 The application scenario of this hackathon challenge is the following: you are given the smart meter power consumption readings of 1000 consumers during a winter and summer month. For each consumer and day, 48 measurements are recorded. There are the raw data that need to be sumamarized. Try out one or more summarization functions over consumers' data so that you maximize the average local error of summarized data, while you minimze the error of aggregated data. 
-
 
 This repository provides you all the necessary utilities and APIs to implement the summarization functions. You do not need to worry about how you can load the data, how you output the data, in what format, etc. All these details are handled by the [challengeLib.jar](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/challengeLib.jar). More specifically, all required utilities can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/nervousnet/challenge). We also provide [an example](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/test) of a summarization function that is based on the k-means algorithm. 
 
