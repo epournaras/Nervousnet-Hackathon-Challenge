@@ -21,6 +21,8 @@ To participate in the Nervousnet Hackathon Challenge, follow the following 6 ste
 4. Use the ```initOutputMap()``` of [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java) to initialize and prepare the output of the summarization function. 
 5. Add the summarized data in the output of the [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java).
 6. Call the method ```dump()``` in [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java). 
+7. 
+More information about how to implement summarization functions can be found in [this tutorial](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/tutorial/tutorial_v1.1.pdf). 
 
 
 Background
