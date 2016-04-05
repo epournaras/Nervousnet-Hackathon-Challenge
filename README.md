@@ -11,16 +11,18 @@ More information about the performance metrics can be found [here[](https://gith
 
 The application scenario of this hackathon challenge is the following: you are given the smart meter power consumption readings of 1000 consumers during a winter and summer month. For each consumer and day, 48 measurements are recorded. There are the raw data that need to be sumamarized. Try out one or more summarization functions over consumers' data so that you maximize the average local error of summarized data, while you minimze the error of aggregated data. 
 
-1. Create the class ```MySummarizationFunction.java```. [Here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/test/Tester.java) is an example.
-1. Use the method ```exportClonedRawValues(...)``` of [```Loader.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Loader.java) to retrieve all the required data.
-2. Implement the summarization function within MySummarizationAlgo.java using the returned values from step 2. 
-3. Use the initOutputMap() of ? to initialize the organzie the output data. 
-4. Use the output of step 3 as input in step 3. 
-5. Call the method dump in ?. 
-
-
 
 This repository provides you all the necessary utilities and APIs to implement the summarization functions. You do not need to worry about how you can load the data, how you output the data, in what format, etc. All these details are handled by the [challengeLib.jar](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/challengeLib.jar). More specifically, all required utilities can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/nervousnet/challenge). We also provide [an example](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/test) of a summarization function that is based on the k-means algorithm. 
+
+To participate in the Nervousnet Hackathon Challenge, follow the following 6 steps:
+
+1. Create the class ```MySummarizationFunction.java```. 
+2. Use the method ```exportClonedRawValues(...)``` of [```Loader.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Loader.java) to retrieve all the required data.
+3. Implement your summarization function within ```MySummarizationFunction.java``` using the returned values of ```exportClonedRawValues(...)``` in step 2. [Here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/test/Tester.java) is an example.
+4. Use the ```initOutputMap()``` of [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java) to initialize and prepare the output of the summarization function. 
+5. Add the summarized data in the output of the [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java).
+6. Call the method ```dump()``` in [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java). 
+
 
 Background
 ---
