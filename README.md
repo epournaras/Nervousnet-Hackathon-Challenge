@@ -1,4 +1,8 @@
-# Nervousnet Hackathon Challenge
+# [Nervousnet Hackathon Challenge](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/tutorial/tutorial_v1.1.pdf)
+
+Dates: 22-23.04.2016
+
+Please register [here](http://phplist.inn.ac/?p=subscribe&id=2).
 
 The goal of this Hackathon session is to develop __summarization functions__ that add noise to sensor data to protect privacy. However, when the summarized data are collected, analytics such the the summation and average aggregation functions, should be performed with a satisfactory accuracy. Therefore, a summarization function can be evaluated in the light of this trade-off: __privacy-preservation vs. accuracy in data analytics__. 
 
