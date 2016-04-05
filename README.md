@@ -12,7 +12,7 @@ More information about the performance metrics can be found [here[](https://gith
 The application scenario of this hackathon challenge is the following: you are given the smart meter power consumption readings of 1000 consumers during a winter and summer month. For each consumer and day, 48 measurements are recorded. There are the raw data that need to be sumamarized. Try out one or more summarization functions over consumers' data so that you maximize the average local error of summarized data, while you minimze the error of aggregated data. 
 
 1. Create the class ```MySummarizationFunction.java```. [Here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/test/Tester.java) is an example.
-1. Use the method exportClonedRawValues() of  ? to retrieve all the required data.
+1. Use the method ```exportClonedRawValues(...)``` of [```Loader.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Loader.java) to retrieve all the required data.
 2. Implement the summarization function within MySummarizationAlgo.java using the returned values from step 2. 
 3. Use the initOutputMap() of ? to initialize the organzie the output data. 
 4. Use the output of step 3 as input in step 3. 
