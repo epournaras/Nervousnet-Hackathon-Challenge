@@ -4,35 +4,35 @@ Dates: 22-23.04.2016
 
 Please register [here](http://phplist.inn.ac/?p=subscribe&id=2).
 
-The goal of this Hackathon session is to develop __summarization functions__ that add noise to sensor data to protect privacy. However, when the summarized data are collected, analytics such the the summation and average aggregation functions, should be performed with a satisfactory accuracy. Therefore, a summarization function can be evaluated in the light of this trade-off: __privacy-preservation vs. accuracy in data analytics__. 
+The goal of this Hackathon session is to develop __summarization functions__ that add noise to sensor data to protect privacy. However, when the summarized data are collected, analytics such the the summation and average aggregation functions, should be performed with a satisfactory accuracy. Therefore, a summarization function can be evaluated in the light of this trade-off: __privacy-preservation vs. accuracy in data analytics__.
 
-A summarizaiton function receives as input a vector with the raw sensitive data and provides as output a vector with summarized values of the same size. The entropy/diversity of the summarized data should be lower than the one of the raw data. Performance is measured as follows: 
+A summarization function receives as input a vector with the raw sensitive data and provides as output a vector with summarized values of the same size. The entropy/diversity of the summarized data should be lower than the one of the raw data. Performance is measured as follows: 
 
-* __Privacy-preservation__ is measured with _relative error of raw-sumamrized data_. For several users, the average of these errors measures the collective privacy-preservation. 
-* __Accuracy__ in analytics is measured with the _relative error of raw-summarized aggregated data_. 
+* __Privacy-preservation__ is measured with _relative error of raw-sumamrized data_. For several users, the average of these errors measures the collective privacy-preservation.
+* __Accuracy__ in analytics is measured with the _relative error of raw-summarized aggregated data_.
 
 More information about the performance metrics can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/papers/Self-regulatory-information-sharing-in-participatory-social-sensing.pdf) and [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/presentations/information-sharing.pdf). Particpants do not need to implement these metrics themselves, instead they can use the [Challenge Analyzer](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeAnalyser) to see how their summarization algorithm performs. The output files can be submitted [here](http://hackathon.inn.ac/submission/) (soon available).
 
 The application scenario of this hackathon challenge is the following: you are given the smart meter power consumption readings of _1000 consumers_ during _a winter and summer month_. For each consumer and day, _48 measurements_ are recorded. There are the raw data that need to be sumamarized. Try out one or more summarization functions over consumers' data so that you maximize the average local error of summarized data, while you minimze the error of aggregated data. To get access to the dataset, please [contact us](mailto:epournaras@ethz.ch).
 
-This repository provides you all the necessary utilities and APIs to implement the summarization functions. You do not need to worry about how you can load the data, how you output the data, in what format, etc. All these details are handled by the [challengeLib.jar](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/challengeLib.jar). More specifically, all required utilities can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/nervousnet/challenge). We also provide [an example](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/test) of a summarization function that is based on the k-means algorithm. 
+This repository provides you all the necessary utilities and APIs to implement the summarization functions. You do not need to worry about how you can load the data, how you output the data, in what format, etc. All these details are handled by the [challengeLib.jar](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/challengeLib.jar). More specifically, all required utilities can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/nervousnet/challenge). We also provide [an example](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeLib/src/test) of a summarization function that is based on the k-means algorithm.
 
 To participate in the Nervousnet Hackathon Challenge, follow the following 6 steps:
 
-1. Create the class ```MySummarizationFunction.java```. 
+1. Create the class ```MySummarizationFunction.java```.
 2. Use the method ```exportClonedRawValues(...)``` of [```Loader.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Loader.java) to retrieve all the required data.
 3. Implement your summarization function within ```MySummarizationFunction.java``` using the returned values of ```exportClonedRawValues(...)``` in step 2. [Here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/test/Tester.java) is an example.
-4. Use the ```initOutputMap()``` of [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java) to initialize and prepare the output of the summarization function. 
+4. Use the ```initOutputMap()``` of [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java) to initialize and prepare the output of the summarization function.
 5. Add the summarized data in the output of the [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java).
-6. Call the method ```dump()``` in [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java). 
+6. Call the method ```dump()``` in [```Dumper.java```](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/ChallengeLib/src/nervousnet/challenge/Dumper.java).
 
-More information about how to implement summarization functions can be found in [this tutorial](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/tutorial/tutorial_v1.1.pdf). 
+More information about how to implement summarization functions can be found in [this tutorial](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/tutorial/tutorial_v1.1.pdf).
 
 
 Background
 ---
 
-This hackathon is inspired by a work that envisions information sharing as a participatory and democratic supply-demand system self-regulated in a bottom-up fashion by citizens. 
+This hackathon is inspired by a work that envisions information sharing as a participatory and democratic supply-demand system self-regulated in a bottom-up fashion by citizens.
 
 [>E. Pournaras, J. Nikolic, P. Velasquez, M. Trovati, N. Bessis and D. Helbing, _Self-regulatory Information Sharing in Participatory Social Sensing_, The European Physical Journal Data Science, 5:14, 2016 © SpringerOpen](http://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-016-0074-4)
 
