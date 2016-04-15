@@ -21,7 +21,7 @@ public class Loader {
 	
 	private String rawPath = Tags.rawPath;
 	
-	private ArrayList<Integer> users = null;
+	//private ArrayList<Integer> users = null;
 	
 	public Loader() {
 		this.map = new HashMap<Integer, LinkedHashMap<Integer, LinkedHashMap<Integer, Double>>>();
@@ -79,17 +79,17 @@ public class Loader {
 		return clonedMap;
 	}
 	
-	private void readRandomlyChosenUsers() {
-		if(users == null) {
-			RandomUserReader rur = new RandomUserReader();
-			rur.setPath("randomlyChosenUsers.txt");
-			rur.setSkipFirstLine(false);
-			rur.openFile();
-			rur.readFile();
-			rur.closeFile();
-			users = rur.getChosenUsers();
-		}		
-	}
+//	private void readRandomlyChosenUsers() {
+//		if(users == null) {
+//			RandomUserReader rur = new RandomUserReader();
+//			rur.setPath("randomlyChosenUsers.txt");
+//			rur.setSkipFirstLine(false);
+//			rur.openFile();
+//			rur.readFile();
+//			rur.closeFile();
+//			users = rur.getChosenUsers();
+//		}		
+//	}
 	
 	/**
 	 * Returns user IDs sorted in ascending order from the original hash map.
@@ -178,24 +178,30 @@ public class Loader {
 //		File folder = new File(rawPath);
 //		File[] listOfFiles = folder.listFiles();
 		System.out.println("Loading files from: " + rawPath);
-		this.readRandomlyChosenUsers();
-		for(Integer user : users) {
-			String filename = "user_" + user + ".txt";
+		//this.readRandomlyChosenUsers();
+//		for(Integer user : users) {
+//			String filename = "user_" + user + ".txt";
 			File folder = new File(rawPath);
 			File[] listOfFiles = folder.listFiles();
-			boolean found = false;
+//			boolean found = false;
 			for(File file : listOfFiles) {
-				if(filename.equals(file.getName())) {
-					found = true;
-					break;
-				}
+//				if(filename.equals(file.getName())) {
+//					found = true;
+//					break;
+//				}
+//			}
+//			if(!found) {
+//				throw new MissingFileException("File " + rawPath + filename + " is missing.");
+//			}
+			Integer user = null;
+			try {
+				user = extractUserID(file.getName());
+			} catch (UnsupportedRawFileFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			if(!found) {
-				throw new MissingFileException("File " + rawPath + filename + " is missing.");
-			}
-			//Integer user = extractUserID(file.getName());
 			RawValueFileReader rvfr = new RawValueFileReader();
-			String path = rawPath + filename;
+			String path = rawPath + file.getName();
 			rvfr.setSkipFirstLine(false);
 			rvfr.setPath(path);
 			rvfr.openFile();

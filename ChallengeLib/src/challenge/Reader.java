@@ -1,11 +1,8 @@
-package nervousnet.challenge;
+package challenge;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.PrintWriter;
 
 public abstract class Reader {
 	
@@ -16,7 +13,7 @@ public abstract class Reader {
 	private BufferedReader in;
 	
 	public Reader() {
-	
+		
 	}
 	
 	public Reader(String path) {
@@ -54,38 +51,18 @@ public abstract class Reader {
 	}
 	
 	public void readFile() {
-		if(in == null) {
-			return;
-		}
-		//StringBuilder sb = new StringBuilder();
 		try {
 			String line = null;
 			if(skipFirstLine) {
 				line = in.readLine();
-				//sb.append(line + System.lineSeparator());
 				line = null;
 			}			
 			boolean flag = true;
 			while(((line = in.readLine()) != null) && flag) {
-				//sb.append(line + System.lineSeparator());
 				flag = processLine(line);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-		} finally {
-//			PrintWriter out = null;
-//			String path = "newRaw/" + "user_" + user + ".txt";
-//			try {
-//				out = new PrintWriter(new BufferedWriter(new FileWriter(path, false)));
-//				out.print(sb.toString());
-//			} catch(Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//				if(out != null) {
-//					out.flush();
-//					out.close();
-//				}
-//			}
 		}
 	}
 	

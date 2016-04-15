@@ -7,7 +7,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.StringTokenizer;
+
 import nervousnet.challenge.exceptions.MissingDataException;
+import nervousnet.challenge.exceptions.UnsupportedRawFileFormatException;
 import nervousnet.challenge.tags.Tags;
 
 public class Dumper {
@@ -44,13 +47,23 @@ public class Dumper {
 	
 	private void readRandomlyChosenUsers() {
 		if(users == null) {
-			RandomUserReader rur = new RandomUserReader();
-			rur.setPath("randomlyChosenUsers.txt");
-			rur.setSkipFirstLine(false);
-			rur.openFile();
-			rur.readFile();
-			rur.closeFile();
-			users = rur.getChosenUsers();
+//			RandomUserReader rur = new RandomUserReader();
+//			rur.setPath("randomlyChosenUsers.txt");
+//			rur.setSkipFirstLine(false);
+//			rur.openFile();
+//			rur.readFile();
+//			rur.closeFile();
+//			users = rur.getChosenUsers();
+			users = new ArrayList<Integer>();
+			File folder = new File(Tags.rawPath);
+			File[] listOfFiles = folder.listFiles();
+			for(File file : listOfFiles) {
+				try {
+					users.add(extractUserID(file.getName()));
+				} catch (UnsupportedRawFileFormatException e) {
+					e.printStackTrace();
+				}
+			}
 		}		
 	}
 	
@@ -77,13 +90,23 @@ public class Dumper {
 	 * @return Returns initialized output hash map
 	 */
 	public static HashMap<Integer, LinkedHashMap<Integer, LinkedHashMap<Integer, Double>>> initOutputMap() {
-		RandomUserReader rur = new RandomUserReader();
-		rur.setPath("randomlyChosenUsers.txt");
-		rur.setSkipFirstLine(false);
-		rur.openFile();
-		rur.readFile();
-		rur.closeFile();
-		ArrayList<Integer> users = rur.getChosenUsers();
+//		RandomUserReader rur = new RandomUserReader();
+//		rur.setPath("randomlyChosenUsers.txt");
+//		rur.setSkipFirstLine(false);
+//		rur.openFile();
+//		rur.readFile();
+//		rur.closeFile();
+		ArrayList<Integer> users = new ArrayList<Integer>();
+		
+		File folder = new File(Tags.rawPath);
+		File[] listOfFiles = folder.listFiles();
+		for(File file : listOfFiles) {
+			try {
+				users.add(extractUserID(file.getName()));
+			} catch (UnsupportedRawFileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		HashMap<Integer, LinkedHashMap<Integer, LinkedHashMap<Integer, Double>>> outputMap = new HashMap<Integer, LinkedHashMap<Integer, LinkedHashMap<Integer, Double>>>();
 		for(Integer user : users) {
@@ -117,6 +140,24 @@ public class Dumper {
 			}
 		}
 		return true;
+	}
+	
+	private static Integer extractUserID(String filename) throws UnsupportedRawFileFormatException {
+		StringTokenizer st = new StringTokenizer(filename, ".");
+		Integer user = null;
+		try {
+			if(st.hasMoreTokens()) {
+				String subname = st.nextToken();
+				StringTokenizer stt = new StringTokenizer(subname, "_");
+				stt.nextToken();
+				if(stt.hasMoreTokens()) {
+					user = Integer.parseInt(stt.nextToken());
+				}
+			}
+		} catch(Exception e) {
+			throw new UnsupportedRawFileFormatException("File " + filename + " is not of supported format! Filename should be formatted as 'user_XXXX' where XXXX represents the user ID.");
+		}
+		return user;
 	}
 	
 	
