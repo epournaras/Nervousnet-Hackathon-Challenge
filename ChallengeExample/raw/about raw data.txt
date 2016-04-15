@@ -1,0 +1,1 @@
+In this folder raw files should be extracted.
