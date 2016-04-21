@@ -143,7 +143,7 @@ public class Analyser {
 				}
 			}
 			
-			double matchingPercentage = counter / (1000 * 2 * 28 * 48);
+			double matchingPercentage = (double)counter / (double)(1000 * 2 * 28 * 48);
 			return matchingPercentage * 100;
 			
 		}  catch (NullArgumentException e) {

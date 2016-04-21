@@ -174,32 +174,27 @@ public class Loader {
 		return raws;
 	}
 	
-	private void load() throws /*UnsupportedRawFileFormatException,*/ MissingDataException, MissingFileException {
-//		File folder = new File(rawPath);
-//		File[] listOfFiles = folder.listFiles();
+	private void load() throws MissingDataException, MissingFileException {
+
 		System.out.println("Loading files from: " + rawPath);
-		//this.readRandomlyChosenUsers();
-//		for(Integer user : users) {
-//			String filename = "user_" + user + ".txt";
-			File folder = new File(rawPath);
-			File[] listOfFiles = folder.listFiles();
-//			boolean found = false;
-			for(File file : listOfFiles) {
-//				if(filename.equals(file.getName())) {
-//					found = true;
-//					break;
-//				}
-//			}
-//			if(!found) {
-//				throw new MissingFileException("File " + rawPath + filename + " is missing.");
-//			}
+
+		File folder = new File(rawPath);
+		File[] listOfFiles = folder.listFiles();
+		if(listOfFiles == null) {
+			throw new MissingFileException("Raw files not found on path: " + rawPath);
+		}
+		if(listOfFiles.length == 0) {
+			throw new MissingFileException("Directory on path: " + rawPath + " is empty.");
+		}
+		int counter = 0;
+		for(File file : listOfFiles) {
 			Integer user = null;
 			try {
 				user = extractUserID(file.getName());
 			} catch (UnsupportedRawFileFormatException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			counter++;
 			RawValueFileReader rvfr = new RawValueFileReader();
 			String path = rawPath + file.getName();
 			rvfr.setSkipFirstLine(false);
@@ -208,9 +203,16 @@ public class Loader {
 			rvfr.readFile();
 			rvfr.closeFile();
 			HashMap<Integer, HashMap<Integer, Double>> rawmap = rvfr.exportValues();
+			if(counter > 1000) {
+				throw new MissingFileException(counter + " out of 1000 files loaded from path: " + rawPath);
+			}
 			this.add(rawmap, user);
 		}
-		System.out.println("Loading files finished.");
+		if(counter != 1000) {
+			throw new MissingFileException(counter + " out of 1000 files loaded from path: " + rawPath);
+		}
+		System.out.println("Loading files finished (" + counter + " out of 1000 loaded).");
+		
 	}
 	
 	private void add(HashMap<Integer, HashMap<Integer, Double>> rawmap, Integer user) throws MissingDataException {

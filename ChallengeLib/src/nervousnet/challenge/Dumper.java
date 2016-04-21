@@ -41,6 +41,7 @@ public class Dumper {
 		} catch(MissingDataException e) {
 			e.printStackTrace();
 			System.err.println("Data will not be dumped to disk!");
+			return;
 		}
 		System.out.println("Data dumping finished!");
 	}
