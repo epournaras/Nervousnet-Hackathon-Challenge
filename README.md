@@ -11,7 +11,11 @@ A summarization function receives as input a vector with the raw sensitive data 
 * __Privacy-preservation__ is measured with _relative error of raw-summarized data_. For several users, the average of these errors measures the collective privacy-preservation.
 * __Accuracy__ in analytics is measured with the _relative error of raw-summarized aggregated data_.
 
-More information about the performance metrics can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/papers/Self-regulatory-information-sharing-in-participatory-social-sensing.pdf) and [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/presentations/information-sharing.pdf). Participants do not need to implement these metrics themselves, instead they can use the [Challenge Analyzer](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeAnalyser) to see how their summarization algorithm performs. The output files can be submitted [here](http://hackathon.inn.ac/submission/).
+More information about the performance metrics can be found [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/papers/Self-regulatory-information-sharing-in-participatory-social-sensing.pdf) and [here](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/blob/master/presentations/information-sharing.pdf). Participants do not need to implement these metrics themselves, instead they can use the [Challenge Analyzer](https://github.com/epournaras/Nervousnet-Hackathon-Challenge/tree/master/ChallengeAnalyser) to see how their summarization algorithm performs. 
+
+<!---
+The output files can be submitted [here](http://hackathon.inn.ac/submission/).
+-->
 
 The application scenario of this hackathon challenge is the following: you are given the smart meter power consumption readings of _1000 consumers_ during _a winter and summer month_. For each consumer and day, _48 measurements_ are recorded. There are the raw data that need to be summarized. Try out one or more summarization functions over consumers' data so that you maximize the average local error of summarized data, while you minimize the error of aggregated data. To get access to the dataset, please [contact us](mailto:epournaras@ethz.ch).
 
